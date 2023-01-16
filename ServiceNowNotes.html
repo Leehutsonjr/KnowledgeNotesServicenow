@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>ServiceNow Notes</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<!--<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"/>-->	
+	<style>
+	table {
+		border-spacing: 0;
+		width: 100%;
+		border: 1px solid #ddd;
+	}
+	th, td {
+		text-align: left;
+		padding: 16px;
+	}
+	</style>		
+	</head>
+	<body>
+		<div class="container mt-3">
+				<h3>ServiceNow Notes</h3>
+				<h6>In your "now learning" account you have a group of saves things called "stufftolearn"</h6>
+				<h5>General Notes:</h5>
+				<p>
+					<ul>
+						<li>Make sure you create an update set and navigate to that update set when about to develop</li>
+						<li>When the process or app is done remember to set the update set state to complete</li>
+						<li>If you set the update set state to COMPLETE, you will not have the option to choose that update set</li>
+						<li>workflow.scratchpad.variableName</variable>
+						</li>
+						<li>current.variables.anyVariableName</li>
+						<li>When getting a variable isnt working remember</li>
+						<li>reference field? use getDisplayValue()</li>
+						<li>String field you can assign direct</li>
+						<li>If you have not received any branding (images etc) then it is<br>pretty much assumed
+						that you will get the branding yourself</li>
+				</ul>
+			</p>
+			<h5>Workflow.scratchpad</h5>
+			<p>
+			<ul>
+				<li>Doesn't work with Flow.  Instead just use Variables</li>
+				<li/>
+				<li/>
+				<li/>
+			</ul>
+			</p>
+			<h5>Creating a Catalog Item Exercise</h5>
+			<p>
+			<ol>
+				<li>I went into the service catalog "Catalog Definitions" under "Maintain Catalogs" and gave the admin the itam (asset manager) role</li>
+				<li>Impersonate the asset manager</li>
+				<li>Goto the catalog builder</li>
+				<li>Use standard items template</li>
+				<li>Fill out information</li>
+				<li>Select the category (All were selected from the template, but you only need the hardware one</li>
+				<li>Click "continue to questions"</li>
+				<li>Create a variable (question) which includes a label, whether its mandatory or not and some choices</li>
+					<li>Continue on to select a flow to be associated with this catalog item (which was already created)</li>
+				<li>I was able to preview before submitting</li>
+				<li>Review and submit</li>
+				<li>Add pricing by returning to the instance (from the catalog builder) and going to maintain items</li>
+				<li>Find the infinity CI and edit the pricing and save</li>
+				<li>Goto one of the selections possible (the memory choice for instance) and add 100 price when that one is selected</li>
+				<li>Click update to save</li>
+				<li>preview the item by going to maintain items, finding the item and clicking "try it"</li>
+				<li/>
+			</ol>
+			</p>
+			<p>
+			<h5>ATF Exercise</h5>
+			<ol>
+			<li>fill this in thanks!</li>
+			</ol>
+			</p>
+			<p>
+			<h5>Delegated Developer</h5>
+			<ul>
+				<li>"Manage collaborators" is the new manage developers</li>
+				<li>If there are no approvers in the "app engine admins" group, the collaboration request will NOT go through</li>
+				<li>Once I added an approver to the group, depending on the approver, it automatically added the collaborator<br> or sent the request to "my approvals" </li>
+				</\ul>
+			</p>
+			<p>
+				<button onclick="sortTable()">Sort</button>
+			</p>
+			<p>
+			<h3>Table Names and Info</h3>
+				<table id="myTable">
+					<th>Category</th>
+					<th>Label</th>
+					<th>Name</th>
+					<th>Description</th>
+					<tr>
+						<td>Event</td>
+						<td>Event</td>
+						<td>sysevent</td>
+						<td/>
+					</tr>
+					<tr>
+						<td>ATF</td>
+						<td>Test</td>
+						<td>sys_atf_test</td>
+						<td>Each test is a record on this table</td>
+					</tr>
+					<tr>
+						<td>ATF</td>
+						<td>Step Result</td>
+						<td>sys_atf_test_result_step</td>
+						<td>Each test result is a record on this table</td>
+					</tr>
+					<tr>
+						<td>ATF</td>
+						<td>Step Configuration</td>
+						<td>sys_atf_step_config</td>
+						<td>Each step configuration is a record on this table</td>
+					</tr>
+					<tr>
+						<td></td>
+						<td>History</td>
+						<td>sys_history_line</td>
+						<td></td>
+					</tr>
+					<tr>
+						<td></td>
+						<td>ECC Queue</td>
+						<td>ecc_queue</td>
+						<td></td>
+					</tr>
+					<tr>
+						<td>Email</td>
+						<td>Email</td>
+						<td>sys_email</td>
+						<td></td>
+					</tr>
+					<tr>
+						<td>Email</td>
+						<td>Email Log</td>
+						<td>sys_email_log</td>
+						<td></td>
+					</tr>
+					<tr>
+						<td>Report</td>
+						<td>Report Execution</td>
+						<td>report_executions</td>
+						<td></td>
+					</tr>
+					<tr>
+						<td>Report</td>
+						<td>Report Stats</td>
+						<td>report_stats</td>
+						<td></td>
+					</tr>
+					<tr>
+						<td>Table</td>
+						<td>Table</td>
+						<td>sys_db_object</td>
+						<td>This is the table that lists all the tables in servicenow</td>
+					</tr>
+					<tr>
+						<td>Change</td>
+						<td>Change Request</td>
+						<td>change_request</td>
+						<td>This is the table that has all the change requests</td>
+					</tr>
+					<tr>
+						<td></td>
+						<td></td>
+						<td>sys_app_module</td>
+						<td></td>
+					</tr>
+					<tr>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+					</tr>
+				</table>
+			</p>
+			<p>
+			<h5>Code Snippets</h5>
+			<p>
+			<h6>Name: GroupMembers</h6>
+			var groupName = 'Customer Success';<br>
+			var g = new GlideRecord('sys_user_grmember');<br>
+			g.addQuery('group.name'+groupName);<br>
+			g.query();<br>
+			while(g.Next()){<br>
+			members += g.user.email.toString();<br>
+			if(g.hasNext()) {<br>
+			members += ',';<br>
+			}<br>
+			}<br>
+			Notes: With this code I had a problem accessing the reference values.<br> 
+			SOLUTION: I was able to concatinate the query with a variable.<br>  
+			Also, my dot walking wasnt correct initially so that was fixed.<br>
+			</p>
+			</p>
+		</div>
+		<script>
+			function sortTable() {
+			  var table, rows, switching, i, x, y, shouldSwitch;
+			  table = document.getElementById("myTable");
+			  switching = true;
+			  /*Make a loop that will continue until
+			  no switching has been done:*/
+			  while (switching) {
+				//start by saying: no switching is done:
+				switching = false;
+				rows = table.rows;
+				/*Loop through all table rows (except the
+				first, which contains table headers):*/
+				for (i = 1; i < (rows.length - 1); i++) { 
+				//start by saying there should be no switching: 
+				shouldSwitch=false; 
+				/*Get the two elements you want to compare, one from current row and one from the next:*/ 
+				x=rows[i].getElementsByTagName("TD" )[0]; y=rows[i + 1].getElementsByTagName("TD")[0]; 
+				//check if the two rows should switch place: 
+				if (x.innerHTML.toLowerCase()> y.innerHTML.toLowerCase()) { 
+				//if so, mark as a switch and break the loop: 
+				shouldSwitch=true; break; 
+				} 
+			} 
+			if (shouldSwitch) { 
+				/*If a switch has been marked, make the switch and mark that a switch has been done:*/ 
+				rows[i].parentNode.insertBefore(rows[i + 1], rows[i]); 
+				switching=true; } 
+				} 
+			}			
+		</script>
+	</body>
+</html>
