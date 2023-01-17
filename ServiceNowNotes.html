@@ -76,13 +76,40 @@
 			</ol>
 			</p>
 			<p>
+			<p>
+			<h5>Save Instance Preferences</h5>
+			<ul>
+			<li>Save Bookmark xml</li>
+			<li>Save userpreferences xml</li>
+			<li>go to the menu filter and type sys_ui_bookmark.list<br>Filter on records where the user column has your values<br>Then use Export XML from the list menu to save as XML</li>
+			<li>But this would not work onchange</li>
+			</ul>
+			</p>
+			<p>
+			<h5>Reference qualifiers</h5>
+			<ul>
+			<li>In Catalog items</li>
+			<li>https://www.servicenow.com/community/now-platform-blog/reference-qualifiers-in-service-catalog/ba-p/2282759</li>
+			<li>For catalog item advanced that was getting the display value from a reference field I had to use:<br> for example: <br> javascript: "company.name=" + g_form.getDisplayBox('current.customer').value </li>
+			</ul>
+			</p>
+			<p>
+			<h5>Script Includes</h5></h5>
+			<ul>
+			<li>The reason I had som much problems with a script include:</li>
+			<li>This article shows the different types of script includes:</li>
+			<li>https://www.learnnowlab.com/Script-Include/</li>
+			<li>I didnt have either initialize function OR abstract ajaxprocessor on my script include! it was not being called!</li>
+			<li>solution: I put Object.extendsObject(AbstractAjaxProcessor in there and it worked!</li>
+			</ul>
+			</p>
 			<h5>Delegated Developer</h5>
 			<ul>
 				<li>"Manage collaborators" is the new manage developers</li>
 				<li>If there are no approvers in the "app engine admins" group, the collaboration request will NOT go through</li>
 				<li>Once I added an approver to the group, depending on the approver, it automatically added the collaborator<br> or sent the request to "my approvals" </li>
 				</\ul>
-			</p>
+			</p>	
 			<p>
 				<button onclick="sortTable()">Sort</button>
 			</p>
