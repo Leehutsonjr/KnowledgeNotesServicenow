@@ -89,8 +89,15 @@
 			<h5>Reference qualifiers</h5>
 			<ul>
 			<li>In Catalog items</li>
-			<li>https://www.servicenow.com/community/now-platform-blog/reference-qualifiers-in-service-catalog/ba-p/2282759</li>
-			<li>For catalog item advanced that was getting the display value from a reference field I had to use:<br> for example: <br> javascript: "company.name=" + g_form.getDisplayBox('current.customer').value </li>
+			<li><a href="https://www.servicenow.com/community/now-platform-blog/reference-qualifiers-in-service-catalog/ba-p/2282759">Reference qualifiers</a></li>
+			<li>For catalog item advanced that was getting the display value from a reference field I had to use:
+			<li><strong>Example Code:</strong><br>
+			Here is an example of a reference qualifier that changes the filter on a reference field every time a dependant field changes:<br><br>
+			javascript: "company.sys_id=" + current.variables.customer + "^u_environment_nameNOT LIKEAIS"<br><br>
+
+			if(current.vaiables.customer.changes()){<br>
+			"company.sys_id=" + current.variables.customer + "^u_environment_nameNOT LIKEAIS"<br>
+			}<br> 
 			</ul>
 			</p>
 			<p>
@@ -103,6 +110,54 @@
 			<li>solution: I put Object.extendsObject(AbstractAjaxProcessor in there and it worked!</li>
 			</ul>
 			</p>
+			<p>
+			<h5>Mandatory on close for task or ritm</h5>
+			<ul>
+			<li>These links show the solution I found</li>
+			<li><a href="https://www.youtube.com/watch?v=zvSwzPRgAbw">Here is a VIDEO on ref quals</a></li>
+			<li><a href="https://www.servicenow.com/community/now-platform-blog/what-is-the-best-way-to-make-catalog-task-variables-mandatory-on/ba-p/2287043">What is the Best Way to Make Catalog Task Variables Mandatory on Closure?</a></li>
+			<li><a href="https://www.servicenow.com/community/developer-forum/make-variable-field-required-on-sc-task-closed-complete/m-p/1450488">Make variable field required on SC_TASK closed complete</a></li>
+			<li>Here is the solution</li>
+			<li>The final configuration
+filter conditions:<br> request item.item is "laptop refresh"<br>state is closed complete<br>
+
+Scripts<br>
+Execute if true<br>
+function onCondition() {<br>
+	g_form.setMandatory('office_use_only',true);<br>
+}<br>
+Execute if false<br>
+function onCondition() {<br>
+	g_form.setMandatory('office_use_only',false);<br>
+}</li>
+			</ul>
+			</p>
+			<p>
+			<h5>Remove user from email notifications</h5>
+			<ol>
+			<li>first step is to see if they can use the personal preferences and see if that works for them</li>
+			<li><a href="https://www.servicenow.com/community/itsm-forum/remove-a-recipient-from-a-email-notification/m-p/746357">Remove a recipient from a Email Notification</a></li>
+			<li></li>
+			</ol>
+			</p>
+			<p>
+			<h5>Add someone to the watch list watchlist from workflow</h5>
+			<ul>
+			<li>Use this to get the group members (this is a script include):<br>var group = new GroupMembers().getMember('Compensation Support');<br>then loop for each comma separated value its:<br>current.watch_list +=</li>
+			<li></li>
+			<li></li>
+			</ul>
+			</p>
+			------------------------------------
+			<p>
+			<h5></h5>
+			<ul>
+			<li></li>
+			<li></li>
+			<li></li>
+			</ul>
+			</p>
+			<a href="url">link text</a>
 			<h5>Delegated Developer</h5>
 			<ul>
 				<li>"Manage collaborators" is the new manage developers</li>
