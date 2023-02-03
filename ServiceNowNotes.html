@@ -98,6 +98,7 @@
 			if(current.vaiables.customer.changes()){<br>
 			"company.sys_id=" + current.variables.customer + "^u_environment_nameNOT LIKEAIS"<br>
 			}<br> 
+			<li><a href="https://servicenowthink.wordpress.com/tag/how-to-modify-reference-qualifiers-with-client-script/">How to modify Reference Qualifiers with Catalog Client Scripts – ServiceNow</a></li>
 			</ul>
 			</p>
 			<p>
@@ -179,14 +180,99 @@ function onCondition() {<br>
 			</p>
 			<p>
 			<h5>If it contains or indexOf</h5>
-			<h6>#</h6>
+			<h6>#unique</h6>
 			<ul>
 			<li><a href="https://www.servicenow.com/community/developer-forum/use-indexof-to-check-field-for-certain-characters/m-p/1648931">Use indexOf to check field for certain characters.</a></li>
+			<li>Sometimes when using indexOf you need to add toString() to make it work</li>
+			<li>Ex:</li>
+			<li>if(array.indexOf(gr.author.toString()) == -1){<br>
+            array.push(gr.author.toString()); <br>
+        }</li>
+			</ul>
+			</p>
+			<p>
+			<h5>Great definition of servicenow</h5>
+			<h6>#what is servicenow?</h6>
+			<ul>
+			<li><a href="https://www.apty.io/blog/servicenow-implementation-cost/#:~:text=The%20cost%20of%20ServiceNow%20can,requirements%20and%20the%20target%20industry.">What is ServiceNow?</a></li>
+			<li>ServiceNow is a cloud-based system that helps automate workflows,<br> 
+			enabling enterprises to manage and maintain their IT processes efficiently.<br> 
+			ServiceNow provides an array of services, so this single tool can cover most of<br> 
+			your IT needs solutions. Here is the list of a few services offered by ServiceNow, </li>
+			<ul>
+			<li>IT Service Management (ITSM)</li> 
+<li>IT Operations Management (ITOM)</li>  
+<li>IT Asset Management (ITAM)</li>  
+<li>IT Business Management (ITBM)</li>  
+<li>Customer Service Management</li>  
+<li>Security Operations</li>  
+<li>HR Service Development </li>
+			</ul>
+			</ul>
+			</p>
+			<p>
+			<h5>Scheduled Reports</h5>
+			<h6>#</h6>
+			<ul>
+			<li><a href="https://developer.servicenow.com/dev.do#!/learn/learning-plans/tokyo/servicenow_administrator/app_store_learnv2_reportanalytics_tokyo_exercise_scheduled_reports">Exercise: Scheduled Reports</a></li>
+			<li><a href="https://www.servicenow.com/community/platform-analytics-forum/scheduled-report-to-email-contacts-that-are-in-the-report-s/m-p/1243756">Scheduled Report to email contacts that are in the report's output</a></li>
+			<li><a href="https://www.servicenow.com/community/platform-analytics-articles/scheduling-a-report-for-dynamic-recipients-based-on-the-table/ta-p/2303202">Scheduling a report for dynamic Recipients based on the table column of the report</a></li>
+			</ul>
+			</p>
+			<p>
+			<h5>Remove Duplicates (code)</h5>
+			<h6>#</h6>
+			<ul>
+			<li>//Remove duplicates (loop)<br>
+gs.info('Cleaning the array: ');<br>
+for(var i = 0; i < array.length; i++){<br>
+    if((uniqueArray.indexOf(array[i]) == -1)){<br>
+        gs.info('no it does not');<br>
+        uniqueArray.push(array[i]);<br>
+    }
+}</li>
+<li>or you can use just that one line of code in the while loop to not add duplicates to an array in the first place</li>
+			<li>populate array</li>
+			<li><a href="https://www.servicenow.com/community/developer-articles/scripts-using-array-how-to-do-sample-codes-push-join-unshift/ta-p/2324442">Scripts:: Using array, how to do, sample codes, push, join, unshift, lenght, printing</a></li>
+			<li>when populating the array MAKE SURE YOU ADD toString()</li>
+			<li>ex: </li>
+			<li>while(g.next()){<br>
+    gs.print(g.number);<br>
+    array.push(g.number.toString());<br>
+}</li>
+			</ul>
+			</p>
+			<p>
+			<h5>Print Array</h5>
+			<h6>#</h6>
+			<ul>
+			<li>//Print array<br>
+for(var i = 0; i < array.length; i++){<br>
+    gs.print(array[i]);<br>
+}</li>
 			<li></li>
 			<li></li>
 			</ul>
 			</p>
-			
+			<p>
+			<h5>Widget Portal issues</h5>
+			<h6>#</h6>
+			<ul>
+			<li>so actually, the issue I had was that the existing code has an if statement with no brackets<br>
+			this made it so that the very next line fro mthat if statement was subject to the condition</li>
+			<li></li>
+			<li></li>
+			</ul>
+			</p>
+			<p>
+			<h5>OS Standard Requestor Information Variable Set</h5>
+			<h6>#</h6>
+			<ul>
+			<li>How is it that only four fields are showing?</li>
+			<li>Answe: They are showing because the mandatory field is set to true</li>
+			<li></li>
+			</ul>
+			</p>
 			------------------------------------
 			<p>
 			<h5></h5>
