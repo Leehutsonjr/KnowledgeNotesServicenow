@@ -88,6 +88,7 @@
 			<p>
 			<h5>Reference qualifiers</h5>
 			<ul>
+			<li><a href="https://www.youtube.com/watch?v=zvSwzPRgAbw">Here is a VIDEO on ref quals</a></li>
 			<li>In Catalog items</li>
 			<li><a href="https://www.servicenow.com/community/now-platform-blog/reference-qualifiers-in-service-catalog/ba-p/2282759">Reference qualifiers</a></li>
 			<li>For catalog item advanced that was getting the display value from a reference field I had to use:
@@ -114,8 +115,7 @@
 			<p>
 			<h5>Mandatory on close for task or ritm</h5>
 			<ul>
-			<li>These links show the solution I found</li>
-			<li><a href="https://www.youtube.com/watch?v=zvSwzPRgAbw">Here is a VIDEO on ref quals</a></li>
+			<li>These links show the solution I found</li>			
 			<li><a href="https://www.servicenow.com/community/now-platform-blog/what-is-the-best-way-to-make-catalog-task-variables-mandatory-on/ba-p/2287043">What is the Best Way to Make Catalog Task Variables Mandatory on Closure?</a></li>
 			<li><a href="https://www.servicenow.com/community/developer-forum/make-variable-field-required-on-sc-task-closed-complete/m-p/1450488">Make variable field required on SC_TASK closed complete</a></li>
 			<li>Here is the solution</li>
@@ -269,10 +269,124 @@ for(var i = 0; i < array.length; i++){<br>
 			<h6>#</h6>
 			<ul>
 			<li>How is it that only four fields are showing?</li>
-			<li>Answe: They are showing because the mandatory field is set to true</li>
+			<li>Answer: They are showing because the mandatory field is set to true</li>
+			<li>Problem: the candidateID was showing on the forms in dev but not in test</li>
+			<li>I found out that there was a catalog ui policy (by searching the catalog ui policy table WHERE name starts with variable name)<br>
+				and I saw rthat there was a ui policy that had visible on left alone.  i set it to true and it hid the field<br>
+				so it had to be that something else was setting it and this was enabling it (?)</li>
+			</ul>
+			</p>
+			<p>
+			<h5>Checklist Checklist template</h5>
+			<h6>#</h6>
+			<ul>
+			<li>So when you did this the last time the checklist was in template_checklist table.<br>
+			The actual checklist code was in the workflow (HR Offboarding)</li>
+			<li><a href="https://docs.servicenow.com/en-US/bundle/tokyo-platform-user-interface/page/use/using-forms/concept/c_Checklists.html">Checklists</a></li>
+			<li><a href="https://www.servicenow.com/community/now-platform-forum/checklist-able-to-make-mandatory-and-able-to-apply-on-templates/m-p/1089614">Checklist - Able to Make Mandatory and Able to Apply on Templates?</a></li>
+			<li>The answer to both of these questions is 'No'...at least out-of-box.  Here are some options though.<br>
+Question 1 - While there isn't any way to make a checklist template apply as part of a regular template<br>
+ I have developed a method to accomplish this.  You can find the steps in the correct answer marked in this post...<br>
+Question 2 - Again, there's no way to do this natively but you can accomplish it with an 'onSubmit' client script like this...</li>
+			<li>function onSubmit() {<br>
+	// Check to make sure checklist is complete before continuing<br>
+	var ci = new GlideRecord('checklist_item');<br>
+	ci.addQuery('checklist.document', g_form.getUniqueValue());<br>
+	ci.addQuery('complete', false);<br>
+	ci.query(); // Must be a synchronous call because this is an 'onSubmit' script<br>
+	if (ci.next()) {<br>
+		alert('All checklist items must be completed before submission.');<br>
+		return false;<br>
+	}
+}</li>
+			</ul>
+			</p>
+			<h5>how to stop an onsubmit from happening servicenow</h5>
+			<h6>#</h6>
+			<ul>
+			<li><a href="https://servicenowguru.com/scripting/stopping-record-submission-servicenow/#:~:text=Preventing%20client%2Dside%20form%20submission,'false'%20in%20the%20script.">Stopping Record Submission</a></li>
+			<li></li>
 			<li></li>
 			</ul>
 			</p>
+			<p>
+			<h5>ServiceNow OneStream specific notes</h5>
+			<h6>#</h6>
+			<ul>
+			<li>Group that will give someone the itil role: Managed ITIL Users</li>
+			<li></li>
+			<li></li>
+			</ul>
+			</p>
+			p>
+			<h5>Groups and roles white glove</h5>
+			<h6>#</h6>
+			<ul>
+			<li>Edward Gutierrez is a good example. <br> I gave him the  OS Company Admin role and he was able to access the field</li>
+			<li>You could possible do searches on the groups table and/or  the roles table WHERE description contains and enter some keywords </li>
+			<li></li>
+			</ul>
+			</p>
+			<p>
+			<h5>System Definition > Relationship </h5>
+			<h6>#</h6>
+			<ul>
+			<li>you can define relationships for related lists (?)</li>
+			<li>this is used to create a custom related list within a form</li>
+			<li>when you right click a table and goto related list it wil show up as the name of the relationship </li>
+			</ul>
+			</p>
+			<p>
+			<h5>Make variable editable on sctask</h5>
+			<h6>#</h6>
+			<ul>
+			<li>This is done in the UI policy</li>
+			<li>I did this for "laptop refresh"</li>
+			<li>How do I make them editable only for a specific person?<br><a href="https://www.servicenow.com/community/developer-forum/make-variables-on-associated-sc-task-editable-when-ritm-when/m-p/1710165">Make Variables on associated sc_task editable when RITM when RITM is Open</a></li>
+			<li><a href="https://www.servicenow.com/community/developer-forum/determine-current-user-in-a-client-script/m-p/2237805">Determine current user in a Client Script?</a></li>
+			<li>Other useful information<br><a href="https://www.servicenow.com/community/itom-forum/hierarchy-of-client-script-ui-policy-and-business-rule-and-acl/m-p/1028702">Hierarchy of Client Script, UI Policy and Business Rule and ACL</a></li>
+			<li><a href="https://www.servicenow.com/community/developer-forum/dot-walking-in-gs-getuser/m-p/2184558">Dot walking in gs.getUser()</a></li>
+			</ul>
+			</p>
+			<p>
+			<h5>How to access reference fields on RITM and task</h5>
+			<h6>#</h6>
+			<ul>
+			<li>This has been a problem.  I was able to dot walk in this manor:<br>alert(g_form.getValue('request_item.cat_item'));<br> this 
+			is only for items on the form like catalog item and customer etc.  assignment group for instance does not need the request_item preface</li>
+			<li></li>
+			<li></li>
+			</ul>
+			</p>
+			<p>
+			<h5>Logical AND logical OR get it right!</h5>
+			<h6>#</h6>
+			<ul>
+			<li>The logical AND operator (&&) returns true if <strong>both</strong> operands are true and returns false otherwise.</li>
+			<li>The logical OR operator (||) returns the boolean value <strong>true if either or both</strong> operands is true and returns false otherwise</li>
+			<li><a href="https://learn.microsoft.com/en-us/cpp/cpp/logical-and-operator-amp-amp?view=msvc-170">Logical Operators</a></li>
+			
+			</ul>
+			</p>
+			<p>
+			<h5>How to clear the cache of the servicenow instance</h5>
+			<h6>#performance #clear #slow</h6>
+			<ul>
+			<li><a href="https://medium.com/servicenow-techminds/how-to-clear-cache-in-service-now-instance-c71b94e8ad74#:~:text=%2Fcache,cache%20and%20gives%20you%20stats.">ServiceNow | How to clear Cache in service now instance?</a></li>
+			<li></li>
+			<li></li>
+			</ul>
+			</p>
+			<p>
+			<h5>The requested flow operation was prohibited by security rules</h5>
+			<h6>#</h6>
+			<ul>
+			<li><a href="https://support.servicenow.com/kb?id=kb_article_view&sysparm_article=KB0754165">The requested flow operation was prohibited by security rules</a></li>
+			<li><a href="https://docs.servicenow.com/bundle/tokyo-application-development/page/administer/flow-designer/task/create-flow-roles.html">Create a flow with roles</a></li>
+			<li></li>
+			</ul>
+			</p>
+			
 			------------------------------------
 			<p>
 			<h5></h5>
@@ -378,6 +492,18 @@ for(var i = 0; i < array.length; i++){<br>
 						<td></td>
 						<td>sys_app_module</td>
 						<td></td>
+					</tr>
+					<tr>
+						<td>Checklist item</td>
+						<td>Checklist item</td>
+						<td>checklist_item</td>
+						<td>All of the items on various checklists</td>
+					</tr>
+					<tr>
+						<td>Checklist template</td>
+						<td>Checklist template</td>
+						<td>checklist_template</td>
+						<td>The templates of checklists that are full of items</td>
 					</tr>
 					<tr>
 						<td></td>
